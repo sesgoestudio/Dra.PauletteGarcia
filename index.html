@@ -1,1 +1,290 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#315F68">
+  <title>Dra. Paulette García | Odontología</title>
+  <meta name="description" content="Conoce los servicios odontológicos de la Dra. Paulette García y agenda tu cita por WhatsApp.">
+
+  <style>
+    :root {
+      /* PALETA: azul menta oscuro, blanco y dorado oscuro */
+      --azul-menta: #315F68;
+      --azul-menta-profundo: #244A52;
+      --blanco: #FFFFFF;
+      --dorado-oscuro: #9A7B4F;
+      --dorado-claro: #C6AE86;
+      --texto: #263638;
+      --fondo: #F5F8F7;
+      --borde: #DCE6E3;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--texto);
+      background: var(--fondo);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+
+    .page { width: min(100% - 32px, 1040px); margin: 0 auto; }
+    .topbar {
+      background: var(--blanco);
+      border-bottom: 1px solid var(--borde);
+    }
+    .topbar-inner {
+      min-height: 86px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 12px 0;
+    }
+    .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
+    .brand img { width: 58px; height: 58px; object-fit: contain; }
+    .brand-name { color: var(--azul-menta-profundo); font-family: Georgia, serif; font-size: 1.08rem; line-height: 1.2; }
+    .brand-subtitle { color: #718080; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
+
+    .contact-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+    .contact-links a {
+      border: 1px solid var(--borde);
+      border-radius: 999px;
+      padding: 9px 14px;
+      color: var(--azul-menta-profundo);
+      font-size: .84rem;
+      transition: .2s ease;
+    }
+    .contact-links a:hover { border-color: var(--dorado-oscuro); background: #FAF7F1; }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 42px;
+      align-items: center;
+      padding: 62px 0 54px;
+    }
+    .eyebrow {
+      color: var(--dorado-oscuro);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
+    h1 { color: var(--azul-menta-profundo); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.04; margin: 13px 0 18px; }
+    .hero p { max-width: 510px; color: #5F7070; font-size: 1.04rem; }
+    .gold-line { width: 62px; height: 2px; background: var(--dorado-oscuro); margin: 24px 0; }
+    .hero-photo {
+      width: 100%;
+      aspect-ratio: 4 / 4.2;
+      object-fit: cover;
+      border-radius: 46% 46% 12px 12px;
+      background: #E3ECE9;
+      border: 7px solid var(--blanco);
+      box-shadow: 0 18px 50px rgba(36, 74, 82, .12);
+    }
+
+    .services-section { background: var(--blanco); padding: 58px 0 64px; }
+    .section-heading { text-align: center; max-width: 620px; margin: 0 auto 32px; }
+    .section-heading h2 { color: var(--azul-menta-profundo); font-size: clamp(2rem, 4vw, 2.8rem); margin: 8px 0; }
+    .section-heading p { color: #718080; margin: 0; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .service {
+      display: flex;
+      align-items: flex-start;
+      gap: 13px;
+      padding: 20px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      background: var(--blanco);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+    .service:hover { border-color: var(--dorado-claro); transform: translateY(-2px); }
+    .service:has(input:checked) { border-color: var(--azul-menta); background: #F1F7F6; box-shadow: 0 0 0 1px var(--azul-menta); }
+    .service input { accent-color: var(--azul-menta); width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
+    .service strong { display: block; color: var(--azul-menta-profundo); font-family: Georgia, serif; font-size: 1.18rem; font-weight: 400; }
+    .service small { color: #718080; display: block; margin-top: 3px; }
+
+    .booking { text-align: center; padding-top: 30px; }
+    .booking-note { color: #718080; font-size: .9rem; margin: 0 0 16px; }
+    .primary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 27px;
+      color: var(--blanco);
+      background: var(--azul-menta);
+      font-weight: 650;
+      cursor: pointer;
+      box-shadow: 0 8px 22px rgba(49, 95, 104, .2);
+      transition: .2s ease;
+    }
+    .primary-button:hover { background: var(--azul-menta-profundo); transform: translateY(-1px); }
+    .message-error { min-height: 24px; color: #9A4B3E; font-size: .88rem; margin-top: 10px; }
+
+    .closing {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      gap: 24px;
+      padding: 38px 0;
+    }
+    .closing h2 { color: var(--azul-menta-profundo); font-size: 2rem; margin: 0 0 5px; }
+    .closing p { color: #718080; margin: 0; }
+    footer { background: var(--azul-menta-profundo); color: rgba(255,255,255,.8); padding: 22px 0; text-align: center; font-size: .82rem; }
+    .floating-whatsapp {
+      position: fixed; right: 20px; bottom: 20px; z-index: 5;
+      background: var(--dorado-oscuro); color: white; border-radius: 999px;
+      padding: 13px 18px; box-shadow: 0 8px 24px rgba(0,0,0,.18); font-size: .9rem;
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
+      .contact-links { justify-content: flex-start; }
+      .contact-links a { padding: 8px 11px; font-size: .78rem; }
+      .hero { grid-template-columns: 1fr; gap: 25px; padding: 42px 0; }
+      .hero-photo { max-height: 390px; aspect-ratio: 5 / 4; border-radius: 18px; }
+      .services { grid-template-columns: 1fr; }
+      .closing { grid-template-columns: 1fr; }
+      .floating-whatsapp { right: 12px; bottom: 12px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="page topbar-inner">
+      <a class="brand" href="#inicio" aria-label="Inicio">
+        <!-- LOGOTIPO: coloca tu PNG en la carpeta assets y cambia la ruta si es necesario. -->
+        <img src="assets/logo-paulette.png" alt="Logotipo de la Dra. Paulette García">
+        <span>
+          <span class="brand-name">Dra. Paulette García</span><br>
+          <span class="brand-subtitle">Odontología</span>
+        </span>
+      </a>
+
+      <!-- SUSTITUYE # por los enlaces reales de Instagram, Facebook y Google Maps. -->
+      <nav class="contact-links" aria-label="Medios de contacto">
+        <a href="#" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="#" target="_blank" rel="noopener">Ubicación</a>
+        <a href="https://wa.me/5210000000000" target="_blank" rel="noopener">WhatsApp</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="page hero" id="inicio">
+      <div>
+        <span class="eyebrow">Tu salud, nuestra prioridad</span>
+        <h1>Una sonrisa saludable comienza aquí.</h1>
+        <div class="gold-line"></div>
+        <p>
+          Atención odontológica enfocada en tu bienestar y en crear sonrisas
+          saludables. Conoce nuestros servicios y solicita información para tu cita.
+        </p>
+      </div>
+
+      <!-- FOTO PRINCIPAL: guarda la fotografía en assets/doctora-paulette.jpg
+           o cambia el nombre de archivo en el atributo src. -->
+      <img class="hero-photo" src="assets/doctora-paulette.jpg"
+           alt="Dra. Paulette García en su consultorio">
+    </section>
+
+    <section class="services-section" id="servicios">
+      <div class="page">
+        <div class="section-heading">
+          <span class="eyebrow">Servicios</span>
+          <h2>¿En qué podemos ayudarte?</h2>
+          <p>Selecciona el tratamiento sobre el que deseas recibir información.</p>
+        </div>
+
+        <div class="services">
+          <label class="service">
+            <input type="checkbox" name="servicio" value="Resinas dentales">
+            <span><strong>Resinas dentales</strong><small>Restauración estética de los dientes.</small></span>
+          </label>
+          <label class="service">
+            <input type="checkbox" name="servicio" value="Ortodoncia">
+            <span><strong>Ortodoncia</strong><small>Opciones para alinear tu sonrisa.</small></span>
+          </label>
+          <label class="service">
+            <input type="checkbox" name="servicio" value="Rehabilitación oral">
+            <span><strong>Rehabilitación oral</strong><small>Tratamientos para recuperar función y estética.</small></span>
+          </label>
+          <label class="service">
+            <input type="checkbox" name="servicio" value="Blanqueamiento dental">
+            <span><strong>Blanqueamiento dental</strong><small>Información sobre opciones para iluminar tu sonrisa.</small></span>
+          </label>
+        </div>
+
+        <div class="booking">
+          <p class="booking-note">Puedes seleccionar uno o varios servicios.</p>
+          <button class="primary-button" id="agendar" type="button">Agendar cita por WhatsApp</button>
+          <div class="message-error" id="mensaje-error" role="status" aria-live="polite"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="page closing">
+      <div>
+        <h2>Estamos para atenderte.</h2>
+        <p>Comunícate para conocer disponibilidad y resolver tus dudas.</p>
+      </div>
+      <a class="primary-button" href="https://wa.me/5210000000000" target="_blank" rel="noopener">Contactar por WhatsApp</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="page">© <span id="year"></span> Dra. Paulette García. Todos los derechos reservados.</div>
+  </footer>
+
+  <a class="floating-whatsapp" href="https://wa.me/5210000000000" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
+    WhatsApp
+  </a>
+
+  <script>
+    /*
+      CONFIGURACIÓN IMPORTANTE:
+      1. Reemplaza 5210000000000 por el número real con clave de país.
+         Ejemplo de formato: 52 + número (sin espacios, signos ni guiones).
+      2. Actualiza también los enlaces de Instagram, Facebook y Google Maps arriba.
+    */
+    const WHATSAPP_NUMBER = "5210000000000";
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.getElementById("agendar").addEventListener("click", () => {
+      const seleccionados = [...document.querySelectorAll('input[name="servicio"]:checked')]
+        .map(input => input.value);
+      const aviso = document.getElementById("mensaje-error");
+
+      if (seleccionados.length === 0) {
+        aviso.textContent = "Selecciona al menos un servicio para continuar.";
+        return;
+      }
+
+      aviso.textContent = "";
+      const listaServicios = seleccionados.join(", ");
+      const mensaje = `Hola, Dra. Paulette. Me gustaría recibir información y agendar una cita para: ${listaServicios}. ¿Podrían compartirme información sobre disponibilidad, costos y valoración?`;
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
+
+      window.open(url, "_blank", "noopener,noreferrer");
+    });
+  </script>
+</body>
+</html>
 
