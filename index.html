@@ -1,290 +1,46 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#315F68">
-  <title>Dra. Paulette García | Odontología</title>
-  <meta name="description" content="Conoce los servicios odontológicos de la Dra. Paulette García y agenda tu cita por WhatsApp.">
-
-  <style>
-    :root {
-      /* PALETA: azul menta oscuro, blanco y dorado oscuro */
-      --azul-menta: #315F68;
-      --azul-menta-profundo: #244A52;
-      --blanco: #FFFFFF;
-      --dorado-oscuro: #9A7B4F;
-      --dorado-claro: #C6AE86;
-      --texto: #263638;
-      --fondo: #F5F8F7;
-      --borde: #DCE6E3;
-    }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      color: var(--texto);
-      background: var(--fondo);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.6;
-    }
-    a { color: inherit; text-decoration: none; }
-    button { font: inherit; }
-
-    .page { width: min(100% - 32px, 1040px); margin: 0 auto; }
-    .topbar {
-      background: var(--blanco);
-      border-bottom: 1px solid var(--borde);
-    }
-    .topbar-inner {
-      min-height: 86px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      padding: 12px 0;
-    }
-    .brand { display: flex; align-items: center; gap: 13px; min-width: 0; }
-    .brand img { width: 58px; height: 58px; object-fit: contain; }
-    .brand-name { color: var(--azul-menta-profundo); font-family: Georgia, serif; font-size: 1.08rem; line-height: 1.2; }
-    .brand-subtitle { color: #718080; font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; }
-
-    .contact-links { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
-    .contact-links a {
-      border: 1px solid var(--borde);
-      border-radius: 999px;
-      padding: 9px 14px;
-      color: var(--azul-menta-profundo);
-      font-size: .84rem;
-      transition: .2s ease;
-    }
-    .contact-links a:hover { border-color: var(--dorado-oscuro); background: #FAF7F1; }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      gap: 42px;
-      align-items: center;
-      padding: 62px 0 54px;
-    }
-    .eyebrow {
-      color: var(--dorado-oscuro);
-      font-size: .76rem;
-      font-weight: 700;
-      letter-spacing: .17em;
-      text-transform: uppercase;
-    }
-    h1, h2 { font-family: Georgia, "Times New Roman", serif; font-weight: 400; }
-    h1 { color: var(--azul-menta-profundo); font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1.04; margin: 13px 0 18px; }
-    .hero p { max-width: 510px; color: #5F7070; font-size: 1.04rem; }
-    .gold-line { width: 62px; height: 2px; background: var(--dorado-oscuro); margin: 24px 0; }
-    .hero-photo {
-      width: 100%;
-      aspect-ratio: 4 / 4.2;
-      object-fit: cover;
-      border-radius: 46% 46% 12px 12px;
-      background: #E3ECE9;
-      border: 7px solid var(--blanco);
-      box-shadow: 0 18px 50px rgba(36, 74, 82, .12);
-    }
-
-    .services-section { background: var(--blanco); padding: 58px 0 64px; }
-    .section-heading { text-align: center; max-width: 620px; margin: 0 auto 32px; }
-    .section-heading h2 { color: var(--azul-menta-profundo); font-size: clamp(2rem, 4vw, 2.8rem); margin: 8px 0; }
-    .section-heading p { color: #718080; margin: 0; }
-    .services {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
-    }
-    .service {
-      display: flex;
-      align-items: flex-start;
-      gap: 13px;
-      padding: 20px;
-      border: 1px solid var(--borde);
-      border-radius: 12px;
-      background: var(--blanco);
-      cursor: pointer;
-      transition: .2s ease;
-    }
-    .service:hover { border-color: var(--dorado-claro); transform: translateY(-2px); }
-    .service:has(input:checked) { border-color: var(--azul-menta); background: #F1F7F6; box-shadow: 0 0 0 1px var(--azul-menta); }
-    .service input { accent-color: var(--azul-menta); width: 18px; height: 18px; margin: 3px 0 0; flex: 0 0 auto; }
-    .service strong { display: block; color: var(--azul-menta-profundo); font-family: Georgia, serif; font-size: 1.18rem; font-weight: 400; }
-    .service small { color: #718080; display: block; margin-top: 3px; }
-
-    .booking { text-align: center; padding-top: 30px; }
-    .booking-note { color: #718080; font-size: .9rem; margin: 0 0 16px; }
-    .primary-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      border: 0;
-      border-radius: 999px;
-      padding: 15px 27px;
-      color: var(--blanco);
-      background: var(--azul-menta);
-      font-weight: 650;
-      cursor: pointer;
-      box-shadow: 0 8px 22px rgba(49, 95, 104, .2);
-      transition: .2s ease;
-    }
-    .primary-button:hover { background: var(--azul-menta-profundo); transform: translateY(-1px); }
-    .message-error { min-height: 24px; color: #9A4B3E; font-size: .88rem; margin-top: 10px; }
-
-    .closing {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: center;
-      gap: 24px;
-      padding: 38px 0;
-    }
-    .closing h2 { color: var(--azul-menta-profundo); font-size: 2rem; margin: 0 0 5px; }
-    .closing p { color: #718080; margin: 0; }
-    footer { background: var(--azul-menta-profundo); color: rgba(255,255,255,.8); padding: 22px 0; text-align: center; font-size: .82rem; }
-    .floating-whatsapp {
-      position: fixed; right: 20px; bottom: 20px; z-index: 5;
-      background: var(--dorado-oscuro); color: white; border-radius: 999px;
-      padding: 13px 18px; box-shadow: 0 8px 24px rgba(0,0,0,.18); font-size: .9rem;
-    }
-
-    @media (max-width: 720px) {
-      .topbar-inner { align-items: flex-start; flex-direction: column; }
-      .contact-links { justify-content: flex-start; }
-      .contact-links a { padding: 8px 11px; font-size: .78rem; }
-      .hero { grid-template-columns: 1fr; gap: 25px; padding: 42px 0; }
-      .hero-photo { max-height: 390px; aspect-ratio: 5 / 4; border-radius: 18px; }
-      .services { grid-template-columns: 1fr; }
-      .closing { grid-template-columns: 1fr; }
-      .floating-whatsapp { right: 12px; bottom: 12px; }
-    }
-  </style>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="theme-color" content="#244A52">
+<title>Dra. Paulette García | Odontología</title>
+<meta name="description" content="Conoce los tratamientos odontológicos de la Dra. Paulette García y solicita información por WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--mint:#315F68;--deep:#244A52;--deepest:#18383F;--gold:#9A7B4F;--gold2:#C6AE86;--paper:#F6F7F3;--white:#fff;--ink:#263638;--muted:#6E7D7C;--line:#DFE7E3;--serif:'Playfair Display',Georgia,serif;--sans:'DM Sans',Arial,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:88px}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.65;overflow-x:hidden}a{color:inherit;text-decoration:none}button{font:inherit}img{display:block;max-width:100%}.wrap{width:min(1120px,calc(100% - 48px));margin:auto}
+.progress{position:fixed;z-index:50;top:0;left:0;width:0;height:3px;background:var(--gold)}.topbar{position:sticky;top:0;z-index:20;background:rgba(246,247,243,.92);backdrop-filter:blur(15px);border-bottom:1px solid rgba(36,74,82,.1)}.topbar-inner{min-height:80px;display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.brand img{width:52px;height:52px;object-fit:contain}.brand-name{display:block;color:var(--deep);font:500 1rem/1.2 var(--serif)}.brand-sub{display:block;margin-top:4px;color:var(--gold);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase}.nav{display:flex;align-items:center;gap:26px;font-size:.84rem;color:#526563}.nav a:hover{color:var(--gold)}.nav .nav-cta{padding:10px 18px;border-radius:30px;background:var(--deep);color:white}
+.hero{display:grid;grid-template-columns:1fr .88fr;align-items:center;gap:clamp(35px,7vw,90px);padding:75px 0 85px}.eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase}.eyebrow:before{content:'';width:25px;height:1px;background:currentColor}h1,h2,h3{font-family:var(--serif);font-weight:400}h1{max-width:650px;margin:18px 0;color:var(--deep);font-size:clamp(3.2rem,6.4vw,6.1rem);line-height:.99;letter-spacing:-.045em}h1 em{color:var(--gold)}.hero-copy p{max-width:490px;color:var(--muted);font-size:1rem}.hero-actions{display:flex;align-items:center;flex-wrap:wrap;gap:18px;margin-top:28px}.button{min-height:52px;display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:0 23px;border:0;border-radius:30px;background:var(--deep);color:white;font-size:.86rem;font-weight:700;box-shadow:0 12px 26px rgba(36,74,82,.15);transition:transform .25s,background .25s}.button:hover{transform:translateY(-3px);background:var(--mint)}.text-link{padding:5px 0;border-bottom:1px solid var(--gold2);color:var(--deep);font-size:.85rem;font-weight:600}.scroll-note{display:flex;align-items:center;gap:12px;margin-top:42px;color:#7A8986;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase}.scroll-note span{width:38px;height:1px;background:var(--gold2)}
+.hero-visual{position:relative;width:100%;max-width:470px;justify-self:end}.photo-frame{padding:12px;border:1px solid rgba(154,123,79,.5);border-radius:48% 48% 12px 12px;background:rgba(255,255,255,.55);box-shadow:0 30px 70px rgba(36,74,82,.12);transform:rotate(2deg)}.hero-photo{width:100%;height:clamp(360px,43vw,540px);object-fit:cover;object-position:center;border-radius:48% 48% 7px 7px;background:#DCE8E4}.photo-caption{position:absolute;left:-30px;bottom:42px;padding:14px 19px;background:var(--deep);color:white;box-shadow:0 14px 35px rgba(24,56,63,.2);transform:rotate(-3deg)}.photo-caption strong{display:block;font:400 1.1rem var(--serif)}.photo-caption span{display:block;color:#D8C6A8;font-size:.62rem;letter-spacing:.13em;text-transform:uppercase}.orbit{position:absolute;top:5%;right:-32px;width:95px;height:95px;border:1px solid var(--gold2);border-radius:50%}.orbit:after{content:'';position:absolute;top:12px;left:15px;width:9px;height:9px;border-radius:50%;background:var(--gold)}
+.ticker{overflow:hidden;background:var(--deep);color:#F7F4EC;border-block:1px solid rgba(198,174,134,.5)}.ticker-track{display:flex;width:max-content;animation:ticker 28s linear infinite}.ticker-group{display:flex;align-items:center;gap:32px;padding:14px 16px;white-space:nowrap;font:400 1rem var(--serif)}.ticker-group b{color:var(--gold2);font:400 1rem var(--sans)}@keyframes ticker{to{transform:translateX(-50%)}}
+.intro{display:grid;grid-template-columns:.7fr 1fr;gap:70px;padding:105px 0}.intro-aside .index{display:block;color:var(--gold);font:400 4.5rem/.9 var(--serif)}.intro-aside p{max-width:220px;color:var(--muted);font-size:.83rem}.intro-copy h2{max-width:650px;margin:12px 0 20px;color:var(--deep);font-size:clamp(2.4rem,4.4vw,4rem);line-height:1.1;letter-spacing:-.03em}.intro-copy p{max-width:650px;color:var(--muted)}
+.services-section{position:relative;overflow:hidden;padding:95px 0 105px;background:#EAF0ED}.services-section:before{content:'TRATAMIENTOS';position:absolute;right:-20px;top:20px;color:rgba(49,95,104,.045);font:700 clamp(5rem,15vw,13rem)/1 var(--sans);letter-spacing:-.08em;pointer-events:none}.section-head{position:relative;display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:40px}.section-head h2{max-width:550px;margin:12px 0 0;color:var(--deep);font-size:clamp(2.5rem,5vw,4.5rem);line-height:1.04;letter-spacing:-.04em}.section-head p{max-width:270px;margin:0 0 5px;color:var(--muted);font-size:.87rem}.services{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.service{display:grid;grid-template-columns:50px 1fr 24px;align-items:center;gap:16px;min-height:140px;padding:24px;border:1px solid rgba(36,74,82,.14);background:rgba(255,255,255,.75);cursor:pointer;transition:transform .3s,border-color .3s,box-shadow .3s,background .3s}.service:hover{transform:translateY(-5px);background:white;border-color:var(--gold2);box-shadow:0 18px 40px rgba(36,74,82,.08)}.service:has(input:checked){background:white;border-color:var(--mint);box-shadow:inset 0 0 0 1px var(--mint),0 14px 30px rgba(36,74,82,.08)}.service-number{color:var(--gold);font:400 1.6rem var(--serif)}.service strong{display:block;color:var(--deep);font:400 1.25rem var(--serif)}.service small{display:block;margin-top:5px;color:var(--muted);font-size:.77rem;line-height:1.5}.service input{width:19px;height:19px;accent-color:var(--mint)}.booking{display:flex;align-items:center;justify-content:space-between;gap:22px;margin-top:28px;padding:24px 26px;background:var(--deep);color:white}.booking p{margin:0;color:rgba(255,255,255,.8);font-size:.86rem}.booking .button{background:var(--gold);box-shadow:none}.message-error{min-height:20px;margin-top:6px;color:#F1D6B9;font-size:.8rem}
+.closing{position:relative;display:grid;grid-template-columns:1fr auto;align-items:center;gap:30px;margin:95px auto;padding:55px clamp(25px,6vw,72px);overflow:hidden;background:var(--deep);color:white}.closing:after{content:'';position:absolute;top:-210px;right:16%;width:310px;height:310px;border:1px solid rgba(198,174,134,.35);border-radius:50%;box-shadow:0 0 0 30px rgba(198,174,134,.04),0 0 0 60px rgba(198,174,134,.035)}.closing h2{position:relative;z-index:1;margin:10px 0 8px;font-size:clamp(2.2rem,4vw,3.5rem);line-height:1.1}.closing p{position:relative;z-index:1;margin:0;color:rgba(255,255,255,.72);font-size:.88rem}.closing .button{position:relative;z-index:1;background:var(--gold);box-shadow:none}footer{padding:25px 0 35px;background:var(--deepest);color:rgba(255,255,255,.7);text-align:center;font-size:.75rem}.mobile-cta{display:none}.reveal{opacity:0;transform:translateY(25px);transition:opacity .75s ease,transform .75s cubic-bezier(.2,.7,.2,1)}.reveal.is-visible{opacity:1;transform:translateY(0)}.delay-1{transition-delay:.12s}
+@media(max-width:760px){html{scroll-padding-top:76px}.wrap{width:min(100% - 36px,560px)}.topbar-inner{min-height:70px}.brand img{width:44px;height:44px}.brand-name{font-size:.94rem}.nav{gap:0}.nav a:not(.nav-cta){display:none}.nav .nav-cta{padding:9px 14px;font-size:.74rem}.hero{grid-template-columns:1fr;gap:38px;padding:52px 0 58px}h1{font-size:clamp(3.25rem,13vw,5.1rem)}.hero-copy p{font-size:.95rem}.hero-actions{margin-top:22px}.hero-visual{width:min(88%,390px);justify-self:center;margin-right:8px}.hero-photo{height:clamp(330px,100vw,440px)}.photo-caption{left:-20px;bottom:28px;padding:12px 16px}.orbit{width:72px;height:72px;right:-23px}.scroll-note{margin-top:28px}.ticker-group{gap:22px;padding-block:13px;font-size:.9rem}.intro{grid-template-columns:1fr;gap:20px;padding:74px 0 78px}.intro-aside{display:flex;align-items:center;gap:16px}.intro-aside .index{font-size:3.2rem}.intro-aside p{max-width:210px;margin:0;font-size:.75rem}.intro-copy h2{font-size:clamp(2.5rem,10vw,3.5rem)}.services-section{padding:74px 0 78px}.section-head{display:block;margin-bottom:27px}.section-head h2{font-size:clamp(2.7rem,11vw,3.8rem)}.section-head p{margin-top:13px;max-width:340px}.services{grid-template-columns:1fr;gap:10px}.service{grid-template-columns:38px 1fr 23px;min-height:116px;gap:12px;padding:18px 16px}.service strong{font-size:1.17rem}.booking{display:block;margin-top:17px;padding:22px 17px}.booking p{margin-bottom:15px}.booking .button{width:100%}.closing{grid-template-columns:1fr;gap:22px;margin-block:62px;padding:37px 23px}.closing .button{width:100%}footer{padding-bottom:110px}.mobile-cta{position:fixed;display:grid;grid-template-columns:1fr 1.2fr;gap:9px;left:10px;right:10px;bottom:max(10px,env(safe-area-inset-bottom));z-index:30;padding:8px;border:1px solid rgba(255,255,255,.15);border-radius:17px;background:rgba(24,56,63,.96);box-shadow:0 12px 35px rgba(0,0,0,.2);backdrop-filter:blur(14px)}.mobile-cta a{min-height:46px;display:flex;align-items:center;justify-content:center;border-radius:11px;font-size:.77rem;font-weight:700}.mobile-cta .services-link{border:1px solid rgba(255,255,255,.28);color:white}.mobile-cta .whatsapp-link{background:#D9C39F;color:var(--deepest)}}
+@media(max-width:380px){.wrap{width:calc(100% - 28px)}.brand{gap:8px}.brand img{width:40px;height:40px}.nav .nav-cta{padding:8px 11px;font-size:.69rem}.hero-actions{align-items:flex-start;flex-direction:column;gap:12px}.photo-caption{left:-13px}.service{grid-template-columns:31px 1fr 22px;padding-inline:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+</style>
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="page topbar-inner">
-      <a class="brand" href="#inicio" aria-label="Inicio">
-        <!-- LOGOTIPO: coloca tu PNG en la carpeta assets y cambia la ruta si es necesario. -->
-        <img src="logo-paulette.png"    alt="Logotipo de la Dra. Paulette García">
-        <span>
-          <span class="brand-name">Dra. Paulette García</span><br>
-          <span class="brand-subtitle">Odontología</span>
-        </span>
-      </a>
-
-      <!-- SUSTITUYE # por los enlaces reales de Instagram, Facebook y Google Maps. -->
-      <nav class="contact-links" aria-label="Medios de contacto">
-        <a href="https://www.instagram.com/dra.paulettegarcia?mdxt=MWNnZWJhczdxbDY2cA==" target=_blank" rel="noopener">Instagram</a>
-        <a href="https://www.facebook.com/share/19g7yGNWqo/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a>
-        <a href="#" target="_blank" rel="noopener">Ubicación</a>
-        <a href="https://wa.me/526692545480" target="_blank" rel="noopener">WhatsApp</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="page hero" id="inicio">
-      <div>
-        <span class="eyebrow">Tu salud, nuestra prioridad</span>
-        <h1>Una sonrisa saludable comienza aquí.</h1>
-        <div class="gold-line"></div>
-        <p>
-          Atención odontológica enfocada en tu bienestar y en crear sonrisas
-          saludables. Conoce nuestros servicios y solicita información para tu cita.
-        </p>
-      </div>
-
-      <!-- FOTO PRINCIPAL: guarda la fotografía en assets/doctora-paulette.jpg
-           o cambia el nombre de archivo en el atributo src. -->
-    <img class="hero-photo" src="doctora-paulette.jpg"
-           alt="Dra. Paulette García en su consultorio">
-    </section>
-
-    <section class="services-section" id="servicios">
-      <div class="page">
-        <div class="section-heading">
-          <span class="eyebrow">Servicios</span>
-          <h2>¿En qué podemos ayudarte?</h2>
-          <p>Selecciona el tratamiento sobre el que deseas recibir información.</p>
-        </div>
-
-        <div class="services">
-          <label class="service">
-            <input type="checkbox" name="servicio" value="Resinas dentales">
-            <span><strong>Resinas dentales</strong><small>Restauración estética de los dientes.</small></span>
-          </label>
-          <label class="service">
-            <input type="checkbox" name="servicio" value="Ortodoncia">
-            <span><strong>Ortodoncia</strong><small>Opciones para alinear tu sonrisa.</small></span>
-          </label>
-          <label class="service">
-            <input type="checkbox" name="servicio" value="Rehabilitación oral">
-            <span><strong>Rehabilitación oral</strong><small>Tratamientos para recuperar función y estética.</small></span>
-          </label>
-          <label class="service">
-            <input type="checkbox" name="servicio" value="Blanqueamiento dental">
-            <span><strong>Blanqueamiento dental</strong><small>Información sobre opciones para iluminar tu sonrisa.</small></span>
-          </label>
-        </div>
-
-        <div class="booking">
-          <p class="booking-note">Puedes seleccionar uno o varios servicios.</p>
-          <button class="primary-button" id="agendar" type="button">Agendar cita por WhatsApp</button>
-          <div class="message-error" id="mensaje-error" role="status" aria-live="polite"></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="page closing">
-      <div>
-        <h2>Estamos para atenderte.</h2>
-        <p>Comunícate para conocer disponibilidad y resolver tus dudas.</p>
-      </div>
-      <a class="primary-button" href="https://wa.me/5210000000000" target="_blank" rel="noopener">Contactar por WhatsApp</a>
-    </section>
-  </main>
-
-  <footer>
-    <div class="page">© <span id="year"></span> Dra. Paulette García. Todos los derechos reservados.</div>
-  </footer>
-
-  <a class="floating-whatsapp" href="https://wa.me/5210000000000" target="_blank" rel="noopener" aria-label="Abrir WhatsApp">
-    WhatsApp
-  </a>
-
-  <script>
-    /*
-      CONFIGURACIÓN IMPORTANTE:
-      1. Reemplaza 5210000000000 por el número real con clave de país.
-         Ejemplo de formato: 52 + número (sin espacios, signos ni guiones).
-      2. Actualiza también los enlaces de Instagram, Facebook y Google Maps arriba.
-    */
-    const WHATSAPP_NUMBER = "5210000000000";
-
-    document.getElementById("year").textContent = new Date().getFullYear();
-
-    document.getElementById("agendar").addEventListener("click", () => {
-      const seleccionados = [...document.querySelectorAll('input[name="servicio"]:checked')]
-        .map(input => input.value);
-      const aviso = document.getElementById("mensaje-error");
-
-      if (seleccionados.length === 0) {
-        aviso.textContent = "Selecciona al menos un servicio para continuar.";
-        return;
-      }
-
-      aviso.textContent = "";
-      const listaServicios = seleccionados.join(", ");
-      const mensaje = `Hola, Dra. Paulette. Me gustaría recibir información y agendar una cita para: ${listaServicios}. ¿Podrían compartirme información sobre disponibilidad, costos y valoración?`;
-      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensaje)}`;
-
-      window.open(url, "_blank", "noopener,noreferrer");
-    });
-  </script>
-</body>
-</html>
-
+<div class="progress" id="progress" aria-hidden="true"></div>
+<header class="topbar"><div class="wrap topbar-inner"><a class="brand" href="#inicio" aria-label="Ir al inicio"><img src="logo-paulette.png" alt="Logotipo de la Dra. Paulette García"><span><span class="brand-name">Dra. Paulette García</span><span class="brand-sub">Odontología</span></span></a><nav class="nav" aria-label="Navegación"><a href="#filosofia">La atención</a><a href="#servicios">Tratamientos</a><a href="https://www.instagram.com/dra.paulettegarcia/" target="_blank" rel="noopener">Instagram</a><a href="https://www.facebook.com/share/19g7yGNWqo/?mibextid=wwXIfr" target="_blank" rel="noopener">Facebook</a><a class="nav-cta" href="https://wa.me/526692545480" target="_blank" rel="noopener">Contactar</a></nav></div></header>
+<main>
+<section class="wrap hero" id="inicio"><div class="hero-copy"><span class="eyebrow">Odontología con atención cercana</span><h1>Una sonrisa que se siente <em>bien.</em></h1><p>Cuidar tu sonrisa también es cuidar de ti. Conoce las opciones de tratamiento y da el siguiente paso con confianza.</p><div class="hero-actions"><a class="button" href="#servicios">Conocer tratamientos <span>↗</span></a><a class="text-link" href="https://wa.me/526692545480" target="_blank" rel="noopener">Hablar por WhatsApp</a></div><div class="scroll-note"><span></span> Desliza para descubrir</div></div><div class="hero-visual reveal"><div class="orbit" aria-hidden="true"></div><div class="photo-frame"><img class="hero-photo" src="doctora-paulette.jpg" alt="Dra. Paulette García"></div><div class="photo-caption"><strong>Dra. Paulette García</strong><span>Tu sonrisa, en buenas manos</span></div></div></section>
+<div class="ticker" aria-label="Tratamientos odontológicos"><div class="ticker-track" aria-hidden="true"><div class="ticker-group"><span>Resinas dentales</span><b>✳</b><span>Ortodoncia</span><b>✳</b><span>Rehabilitación oral</span><b>✳</b><span>Blanqueamiento dental</span><b>✳</b></div><div class="ticker-group"><span>Resinas dentales</span><b>✳</b><span>Ortodoncia</span><b>✳</b><span>Rehabilitación oral</span><b>✳</b><span>Blanqueamiento dental</span><b>✳</b></div></div></div>
+<section class="wrap intro" id="filosofia"><aside class="intro-aside reveal"><span class="index">01</span><p>Una experiencia pensada alrededor de tu bienestar.</p></aside><div class="intro-copy reveal delay-1"><span class="eyebrow">Atención personalizada</span><h2>Tu salud bucal merece tiempo, cuidado y confianza.</h2><p>Cada sonrisa tiene necesidades distintas. Conoce los tratamientos disponibles y contacta directamente para resolver tus dudas, recibir orientación y consultar disponibilidad para una valoración.</p></div></section>
+<section class="services-section" id="servicios"><div class="wrap"><div class="section-head reveal"><div><span class="eyebrow">02 / Tratamientos</span><h2>Encuentra el cuidado que buscas.</h2></div><p>Selecciona uno o varios tratamientos para solicitar información por WhatsApp.</p></div><div class="services">
+<label class="service reveal"><span class="service-number">01</span><span><strong>Resinas dentales</strong><small>Restauración estética para recuperar la forma y apariencia de tus dientes.</small></span><input type="checkbox" name="servicio" value="Resinas dentales" aria-label="Seleccionar resinas dentales"></label>
+<label class="service reveal delay-1"><span class="service-number">02</span><span><strong>Ortodoncia</strong><small>Alternativas para alinear tus dientes y mejorar tu mordida.</small></span><input type="checkbox" name="servicio" value="Ortodoncia" aria-label="Seleccionar ortodoncia"></label>
+<label class="service reveal"><span class="service-number">03</span><span><strong>Rehabilitación oral</strong><small>Opciones para recuperar función, comodidad y estética dental.</small></span><input type="checkbox" name="servicio" value="Rehabilitación oral" aria-label="Seleccionar rehabilitación oral"></label>
+<label class="service reveal delay-1"><span class="service-number">04</span><span><strong>Blanqueamiento dental</strong><small>Consulta opciones para mejorar la luminosidad de tu sonrisa.</small></span><input type="checkbox" name="servicio" value="Blanqueamiento dental" aria-label="Seleccionar blanqueamiento dental"></label>
+</div><div class="booking reveal"><div><p>¿Ya sabes qué tratamiento te interesa?</p><div class="message-error" id="mensaje-error" role="status" aria-live="polite"></div></div><button class="button" id="agendar" type="button">Solicitar información ↗</button></div></div></section>
+<section class="wrap closing reveal"><div><span class="eyebrow">03 / Da el siguiente paso</span><h2>Tu próxima sonrisa comienza con una conversación.</h2><p>Escríbenos para consultar disponibilidad y resolver tus dudas.</p></div><a class="button" href="https://wa.me/526692545480" target="_blank" rel="noopener">Contactar por WhatsApp ↗</a></section>
+</main><footer><div class="wrap">© <span id="year"></span> Dra. Paulette García · Odontología</div></footer>
+<div class="mobile-cta" aria-label="Acciones rápidas"><a class="services-link" href="#servicios">Ver tratamientos</a><a class="whatsapp-link" href="https://wa.me/526692545480" target="_blank" rel="noopener">WhatsApp ↗</a></div>
+<script>
+const WHATSAPP_NUMBER='526692545480';document.getElementById('year').textContent=new Date().getFullYear();
+const reveals=document.querySelectorAll('.reveal');if('IntersectionObserver'in window&&!window.matchMedia('(prefers-reduced-motion: reduce)').matches){const observer=new IntersectionObserver((entries,obs)=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');obs.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});reveals.forEach(el=>observer.observe(el))}else{reveals.forEach(el=>el.classList.add('is-visible'))}
+const progress=document.getElementById('progress');let ticking=false;window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%';ticking=false});ticking=true}},{passive:true});
+document.getElementById('agendar').addEventListener('click',()=>{const selected=[...document.querySelectorAll('input[name="servicio"]:checked')].map(el=>el.value);const notice=document.getElementById('mensaje-error');if(!selected.length){notice.textContent='Selecciona al menos un tratamiento para continuar.';document.getElementById('servicios').scrollIntoView({behavior:'smooth'});return}notice.textContent='';const msg='Hola, Dra. Paulette. Me gustaría recibir información y agendar una cita para: '+selected.join(', ')+'. ¿Podrían compartirme disponibilidad, costos y opciones de valoración?';window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg),'_blank','noopener,noreferrer')});
+</script>
+</body></html>
