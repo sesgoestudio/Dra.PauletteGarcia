@@ -407,7 +407,144 @@
         font-size: .68rem;
     }
 }
+/* =====================================
+   CORRECCIÓN DEFINITIVA DEL HEADER MÓVIL
+===================================== */
 
+@media (max-width: 760px) {
+
+    .topbar-inner {
+        min-height: 76px;
+        height: auto;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 6px 0;
+    }
+
+    .brand {
+        flex: 0 1 auto;
+        min-width: 0;
+        gap: 7px;
+    }
+
+    .brand img {
+        width: 58px;
+        height: 58px;
+        flex: 0 0 58px;
+        transform: none;
+    }
+
+    .brand-name {
+        font-size: .78rem;
+        white-space: nowrap;
+    }
+
+    .brand-sub {
+        font-size: .65rem;
+    }
+
+    .nav {
+        width: auto;
+        flex: 0 0 auto;
+        display: flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 9px;
+        padding: 0;
+        margin: 0;
+        border: 0;
+        font-size: .7rem;
+    }
+
+    .nav a[href="#filosofia"],
+    .nav a[href="#servicios"] {
+        display: none;
+    }
+
+    .nav a.social-link {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 34px;
+        min-height: 34px;
+        padding: 0;
+        border: 0;
+        border-radius: 50%;
+        background: transparent;
+        color: var(--deep);
+        font-size: 0;
+    }
+
+    .nav a.social-link svg {
+        display: block;
+        width: 19px;
+        height: 19px;
+    }
+
+    .nav .nav-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 36px;
+        padding: 0 12px;
+        border-radius: 30px;
+        background: var(--deep);
+        color: #fff;
+        font-size: .68rem;
+        white-space: nowrap;
+    }
+}
+
+
+/* TELÉFONOS MUY PEQUEÑOS */
+
+@media (max-width: 380px) {
+
+    .topbar-inner {
+        gap: 4px;
+    }
+
+    .brand {
+        gap: 4px;
+    }
+
+    .brand img {
+        width: 48px;
+        height: 48px;
+        flex-basis: 48px;
+    }
+
+    .brand-name {
+        font-size: .69rem;
+    }
+
+    .brand-sub {
+        font-size: .59rem;
+    }
+
+    .nav {
+        gap: 4px;
+    }
+
+    .nav a.social-link {
+        width: 25px;
+    }
+
+    .nav a.social-link svg {
+        width: 17px;
+        height: 17px;
+    }
+
+    .nav .nav-cta {
+        padding: 0 9px;
+        font-size: .64rem;
+    }
+}
 </style>
 </head>
 <body>
